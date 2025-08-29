@@ -9,5 +9,8 @@ public class Main {
         Rectangle r1 = new Rectangle(20.0, 25.0);
         System.out.println("Area of Rectangle: " + r1.area());
 
+        Students s1 = new Students();
+        s1.getGrades();
+
     }
 }
