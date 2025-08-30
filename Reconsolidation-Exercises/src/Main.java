@@ -10,7 +10,9 @@ public class Main {
         System.out.println("Area of Rectangle: " + r1.area());
 
         Students s1 = new Students();
-        s1.getGrades();
+        //s1.getGrades();
 
+        Exceptions e1 = new Exceptions();
+        e1.testingExceptions();
     }
 }
