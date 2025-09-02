@@ -40,10 +40,32 @@ public class LibrarySystem {
 
                 case "2":
                      System.out.println("Enter the ID of the book you wish to remove: ");
-                     int bookID = scanner.nextInt();
+                     int bookIDRemove = scanner.nextInt();
                      scanner.nextLine();
-                     bookshelf.removeBook(bookID);
+                     bookshelf.removeBook(bookIDRemove);
                      break;
+
+                case "3":
+                    System.out.println("Enter the ID of the book you wish to borrow: ");
+                    int bookIDBorrow = scanner.nextInt();
+                    scanner.nextLine();
+                    bookshelf.borrowBook(bookIDBorrow);
+                    break;
+
+                case "4":
+                    System.out.println("Enter the ID of the book you wish to return: ");
+                    int bookIDReturn = scanner.nextInt();
+                    scanner.nextLine();
+                    bookshelf.returnBook(bookIDReturn);
+                    break;
+
+                case "5":
+                    bookshelf.listAvailableBooks();
+                    break;
+
+                case "6":
+                    bookshelf.listBorrowedBooks();
+                    break;
 
                 case "7":
                      bookshelf.listAllBooks();

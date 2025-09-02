@@ -4,7 +4,7 @@ public class Book {
     private String author;
     private String title;
     private int pages;
-    private static int idCounter = 1;
+    private static int idCounter;
     private int id;
     private boolean isBorrowed = false;
 
@@ -12,8 +12,7 @@ public class Book {
         this.author = author;
         this.title = title;
         this.pages = pages;
-        this.id = idCounter + 1;
-        idCounter++;
+        this.id = idCounter++;
 
     }
 
@@ -26,8 +25,8 @@ public class Book {
         return isBorrowed;
     }
 
-    public boolean setBorrowed() {
-       return isBorrowed = !isBorrowed;
+    public void setBorrowed() {
+        isBorrowed = !isBorrowed;
     }
 
     public String getBookDetails() {

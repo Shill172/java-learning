@@ -1,6 +1,5 @@
 // Bookshelf holds multiple Books
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Bookshelf {
@@ -17,20 +16,44 @@ public class Bookshelf {
 
     public void removeBook(int id) {
         String status = testAvailability(id);
-        if (status.equals("Available")) {
-            System.out.println("Removing book " + id);
-            availableBooks.remove(id);
-            allBooks.remove(id);
+        switch (status) {
+            case "Available" -> {
+                System.out.println("Removing book " + "'" + id + "'");
+                availableBooks.remove(id);
+                allBooks.remove(id);
+            }
+            case "Borrowed" -> System.out.println("You cannot remove book " + "'" + id + "' as it is borrowed");
+            case "Unavailable" -> System.out.println("You cannot remove book " + "'" + id + "' as it doesn't exist");
         }
     }
 
     public void borrowBook(int id) {
         String status = testAvailability(id);
-        if (status.equals("Available")) {
-            availableBooks.put(borrowedBooks.get(id).getID(), borrowedBooks.get(id));
-            availableBooks.remove(id);
+        switch (status) {
+            case "Available" -> {
+                System.out.println("Borrowing book " + "'" + id + "'");
+                borrowedBooks.put(availableBooks.get(id).getID(), availableBooks.get(id));
+                borrowedBooks.get(id).setBorrowed();
+                availableBooks.remove(id);
+            }
+            case "Borrowed" -> System.out.println("You cannot borrow book " + "'" + id + "' as it is already borrowed");
+            case "Unavailable" -> System.out.println("you cannot borrow book " + "'" + id + "' as it doesn't exist");
         }
 
+    }
+
+    public void returnBook(int id) {
+        String status = testAvailability(id);
+        switch (status) {
+            case "Available" -> System.out.println("Book " + "'" + id + "' is available meaning you cant return it");
+            case "Borrowed" -> {
+                System.out.println("Returning book " + "'" + id + "'");
+                availableBooks.put(borrowedBooks.get(id).getID(), borrowedBooks.get(id));
+                availableBooks.get(id).setBorrowed();
+                borrowedBooks.remove(id);
+            }
+            case "Unavailable" -> System.out.println("You cannot return book " + "'" + id + "' as it doesn't exist");
+        }
     }
 
     public void listAvailableBooks() {
@@ -49,21 +72,22 @@ public class Bookshelf {
 
     public void listAllBooks() {
         System.out.println("Number of Total books: " + allBooks.size() + "\nTotal Books: ");
-        listAvailableBooks();
-        listBorrowedBooks();
+        for (Book book : allBooks.values()) {
+            System.out.println(book.getBookDetails());
+        }
     }
 
     private String testAvailability(int id) {
         Book ifNull = allBooks.get(id);
         boolean ifBorrowed = ifNull.getIsBorrowed();
         if (ifNull == null) {
-            System.out.println("Book not found, cannot borrow");
+            System.out.println("This book doesn't exist");
             return "Non-existent";
         } else if (ifBorrowed) {
-            System.out.println("Book is borrowed already, cannot borrow");
+            System.out.println("This book is borrowed.");
             return "Borrowed";
         } else {
-            System.out.println("Book is available for action.");
+            System.out.println("This books available");
             return "Available";
         }
     }
