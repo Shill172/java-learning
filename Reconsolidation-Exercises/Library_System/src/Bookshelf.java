@@ -23,7 +23,7 @@ public class Bookshelf {
                 allBooks.remove(id);
             }
             case "Borrowed" -> System.out.println("You cannot remove book " + "'" + id + "' as it is borrowed");
-            case "Unavailable" -> System.out.println("You cannot remove book " + "'" + id + "' as it doesn't exist");
+            case "Non-existent" -> System.out.println("You cannot remove book " + "'" + id + "' as it doesn't exist");
         }
     }
 
@@ -37,7 +37,7 @@ public class Bookshelf {
                 availableBooks.remove(id);
             }
             case "Borrowed" -> System.out.println("You cannot borrow book " + "'" + id + "' as it is already borrowed");
-            case "Unavailable" -> System.out.println("you cannot borrow book " + "'" + id + "' as it doesn't exist");
+            case "Non-existent" -> System.out.println("you cannot borrow book " + "'" + id + "' as it doesn't exist");
         }
 
     }
@@ -52,7 +52,7 @@ public class Bookshelf {
                 availableBooks.get(id).setBorrowed();
                 borrowedBooks.remove(id);
             }
-            case "Unavailable" -> System.out.println("You cannot return book " + "'" + id + "' as it doesn't exist");
+            case "Non-existent" -> System.out.println("You cannot return book " + "'" + id + "' as it doesn't exist");
         }
     }
 
@@ -78,12 +78,17 @@ public class Bookshelf {
     }
 
     private String testAvailability(int id) {
-        Book ifNull = allBooks.get(id);
-        boolean ifBorrowed = ifNull.getIsBorrowed();
-        if (ifNull == null) {
+
+        if (allBooks.isEmpty()) {
+            System.out.println("There are no books in the library yet");
+            return "Non-existent";
+        }
+
+        Book availabilityBook = allBooks.get(id);
+        if (availabilityBook == null) {
             System.out.println("This book doesn't exist");
             return "Non-existent";
-        } else if (ifBorrowed) {
+        } else if (availabilityBook.getIsBorrowed()) {
             System.out.println("This book is borrowed.");
             return "Borrowed";
         } else {

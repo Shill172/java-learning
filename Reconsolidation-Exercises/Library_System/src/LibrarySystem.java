@@ -1,5 +1,7 @@
-// LibrarySystem is a small project bringing all my recapped knowledge together
+// LibrarySystem is a small project bringing all my recapped knowledge together. I try to use data structures like for/while loops, ArrayLists, HashMaps, and switch statements,
+// I am also going to use Scanners for user input. I will also have a go at having inheritance in the program. If a bug is encountered, I will try my best to debug it using exceptions.
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class LibrarySystem {
@@ -8,7 +10,12 @@ public class LibrarySystem {
         boolean running = true;
         Scanner scanner = new Scanner(System.in);
 
-        bookshelf.listAvailableBooks();
+        Book defaultBook1 = new Book("Author 1", "This book is added by default", 500);
+        Book randomBook = new Book("Random Author 1", "Random Book Title", 1000);
+        Book finalAddedBook = new Book("Whew", "Final", 700);
+        bookshelf.addBook(defaultBook1);
+        bookshelf.addBook(randomBook);
+        bookshelf.addBook(finalAddedBook);
 
         while (running) {
             System.out.println("""
@@ -25,10 +32,10 @@ public class LibrarySystem {
             switch (scanner.nextLine().toLowerCase().trim()) {
                 case "1":
                     System.out.println("Enter the author of the book: ");
-                    String bookName = scanner.nextLine();
+                    String bookAuthor = scanner.nextLine();
 
                     System.out.println("Enter the title of the book: ");
-                    String bookAuthor = scanner.nextLine();
+                    String bookName = scanner.nextLine();
 
                     System.out.println("Enter the number of pages in the book: ");
                     int bookPages = scanner.nextInt();
@@ -40,24 +47,40 @@ public class LibrarySystem {
 
                 case "2":
                      System.out.println("Enter the ID of the book you wish to remove: ");
-                     int bookIDRemove = scanner.nextInt();
-                     scanner.nextLine();
-                     bookshelf.removeBook(bookIDRemove);
+                     try {
+                         int bookIDRemove = scanner.nextInt();
+                         scanner.nextLine();
+                         bookshelf.removeBook(bookIDRemove);
+                     } catch (InputMismatchException e) {
+                         System.out.println("Invalid input, please enter a number");
+                         scanner.nextLine(); // needed to clear input/"flush out"
+                     }
                      break;
 
                 case "3":
                     System.out.println("Enter the ID of the book you wish to borrow: ");
-                    int bookIDBorrow = scanner.nextInt();
-                    scanner.nextLine();
-                    bookshelf.borrowBook(bookIDBorrow);
+                    try {
+                        int bookIDBorrow = scanner.nextInt();
+                        scanner.nextLine();
+                        bookshelf.borrowBook(bookIDBorrow);
+                    } catch (InputMismatchException e) {
+                        System.out.println("Invalid input, please enter a number");
+                        scanner.nextLine();
+                    }
                     break;
 
                 case "4":
                     System.out.println("Enter the ID of the book you wish to return: ");
-                    int bookIDReturn = scanner.nextInt();
-                    scanner.nextLine();
-                    bookshelf.returnBook(bookIDReturn);
+                    try {
+                        int bookIDReturn = scanner.nextInt();
+                        scanner.nextLine();
+                        bookshelf.returnBook(bookIDReturn);
+                    } catch (InputMismatchException e) {
+                        System.out.println("Invalid input, please enter a number");
+                        scanner.nextLine();
+                    }
                     break;
+
 
                 case "5":
                     bookshelf.listAvailableBooks();
@@ -76,10 +99,14 @@ public class LibrarySystem {
                     running = false;
                     break;
 
+                default:
+                    System.out.println("Invalid choice");
+
 
             }
         }
 
 
     }
+
 }
