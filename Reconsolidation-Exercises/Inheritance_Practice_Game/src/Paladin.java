@@ -31,6 +31,11 @@ public class Paladin extends Character {
     }
 
     @Override
+    public Gods getGod() {
+        return chosenGod;
+    }
+
+    @Override
     public void attack(Character target) {//Name        //attacks....                                   // monster 1 etc...
         System.out.println(getName() + chosenGod.getFightDialogue() + chosenGod.getDamage() + " damage to " + target.getName());
     }

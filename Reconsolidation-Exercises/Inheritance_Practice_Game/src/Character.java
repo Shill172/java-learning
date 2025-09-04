@@ -24,5 +24,8 @@ abstract class Character {
 
     public abstract void attack(Character target);
 
+    public Gods getGod() {
+        return null;
+    }
 
 }

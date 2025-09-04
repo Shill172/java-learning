@@ -8,4 +8,8 @@ public interface Gods {
 
     int getDamage();
 
+    void secondAction();
+
+    String secondActionText();
+
 }

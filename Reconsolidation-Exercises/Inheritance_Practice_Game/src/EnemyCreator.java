@@ -7,7 +7,7 @@ public class EnemyCreator {
         int number = rand.nextInt(1);
 
         if (number == 0) {
-            return new Orc("Orc", 50, "Orc");
+            return new Orc("Orc (◣_◢)", 50, "Orc");
         } else {
             return null;
         }

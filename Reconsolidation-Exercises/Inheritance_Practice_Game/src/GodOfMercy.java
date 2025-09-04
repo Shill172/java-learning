@@ -12,5 +12,15 @@ public class GodOfMercy implements Gods {
         return baseDamage / getTargets() + (int) (Math.random() * 3);
     }
 
+    @Override
+    public void secondAction() {
+        System.out.println("not done yet");
+    }
+
+    @Override
+    public String secondActionText() {
+        return "Heal (5 HP)";
+    }
+
 
 }

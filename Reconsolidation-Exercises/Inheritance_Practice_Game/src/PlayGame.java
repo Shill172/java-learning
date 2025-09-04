@@ -2,13 +2,12 @@
 // I will try to implement parent/subclasses, overriding, polymorphism, abstract classes, and interfaces
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class PlayGame {
     public static void main(String[] args) {
-        List<Character> players = new ArrayList<>();
-        List<Character> enemies = new ArrayList<>();
+        ArrayList<Character> players = new ArrayList<>();
+        ArrayList<Character> enemies = new ArrayList<>();
 
         Scanner sc = new Scanner(System.in);
         System.out.println("Welcome to the game. Please select a class.");
@@ -33,11 +32,13 @@ public class PlayGame {
 
         System.out.println("Okay! Lets finally start the game. Kill your opponent(s): ");
         for (int i = 0; i < enemies.size(); i++) {
-            System.out.print(enemies.get(i).getName() + " ");
+            System.out.print(enemies.get(i).getName() + " \n \n");
         }
 
-
-        paladin.attack(enemies.getFirst());
+        boolean running;
+        while (running = true) {
+            ChooseAction.chooseAction(players, enemies);
+        }
 
     }
 
