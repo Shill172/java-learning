@@ -1,13 +1,18 @@
-abstract class Character {
+public abstract class Character {
 
     String name;
     int health;
     String classType;
+    boolean isPlayer = true;
 
     public Character(String name, int health, String classType) {
         this.name = name;
         this.health = health;
         this.classType = classType;
+    }
+
+    public int getDamage() {
+        return 5;
     }
 
     public String getName() {
@@ -22,10 +27,24 @@ abstract class Character {
         return baseDamage + (int)(Math.random() + 5);
     }
 
+
+
     public abstract void attack(Character target);
 
     public Gods getGod() {
         return null;
+    }
+
+    public boolean getIsPlayer() {
+        return isPlayer;
+    }
+
+    public String getClassType() {
+        return classType;
+    }
+
+    public void buff() {
+
     }
 
 }

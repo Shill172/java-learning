@@ -27,17 +27,34 @@ public class PlayGame {
             case "1":
                 System.out.println("Generating 1 enemy");
                 enemies.add(EnemyCreator.generateEnemy());
+                break;
+            case "2":
+                System.out.println("Generating 2 enemies");
+                enemies.add(EnemyCreator.generateEnemy());
+                enemies.add(EnemyCreator.generateEnemy());
+                break;
+            case "3":
+                System.out.println("Generating 3 enemies");
+                enemies.add(EnemyCreator.generateEnemy());
+                enemies.add(EnemyCreator.generateEnemy());
+                enemies.add(EnemyCreator.generateEnemy());
+                break;
+
         }
 
 
         System.out.println("Okay! Lets finally start the game. Kill your opponent(s): ");
         for (int i = 0; i < enemies.size(); i++) {
-            System.out.print(enemies.get(i).getName() + " \n \n");
+            System.out.print(enemies.get(i).getName() + " ");
         }
+
+        System.out.println();
 
         boolean running;
         while (running = true) {
             ChooseAction.chooseAction(players, enemies);
+            ChooseAction.chooseAction(enemies, players);
+            break;
         }
 
     }

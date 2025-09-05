@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 
 public class ChooseAction {
@@ -7,27 +8,43 @@ public class ChooseAction {
         Scanner actionScanner = new Scanner(System.in);
 
         for (Character c : character) {
-            System.out.println("Your turn! Please choose an action: \n1. Attack");
+            // Check if player
+            if (c.getIsPlayer()) {
+                System.out.println("\nYour turn! Please choose an action: \n1. Attack");
+                // Check if paladin
+                Gods god = c.getGod();
+                c.getGod();
+                if (c.getGod() != null) {
+                    System.out.println("2. " + god.secondActionText());
+                } else {
+                    System.out.println("reached not good case" + c.getGod());
+                }
 
-            // Check if paladin
-            Gods god = c.getGod();
-            c.getGod();
-            if (c.getGod() != null) {
-                System.out.println("2. " + god.secondActionText());
+                switch (actionScanner.nextLine()) {
+                    case "1":
+                        c.attack(TargetChooser.chooseTarget(enemy));
+                }
             } else {
-                System.out.println("reached not good case" + c.getGod());
+                System.out.println(c.getName() + "'s turn!");
+                Random monsterRandom = new Random();
+                if (c.getClassType().equals("Orc")) {
+                    if (monsterRandom.nextBoolean()) {
+                        System.out.println("Orc chooses to attack!");
+                        c.attack(enemy.getFirst());
+                        c.buff();
+                    } else {
+                        System.out.println("Orc chooses to buff!");
+                        c.buff();
+                    }
+                    System.out.println("orc base damage= " + Orc.baseDamage);
+                    c.attack(TargetChooser.chooseTarget(enemy));
+
+                }
+
             }
 
-            switch (actionScanner.nextLine()) {
-                case "1":
-                    c.attack(enemy.getFirst());
-            }
 
         }
 
-
-
-
     }
-
 }
