@@ -22,7 +22,11 @@ public class ChooseAction {
 
                 switch (actionScanner.nextLine()) {
                     case "1":
-                        c.attack(TargetChooser.chooseTarget(enemy));
+                        //player damage roll
+                        int damageRoll = c.getDamage();
+                        Character target = TargetChooser.chooseTarget(enemy);
+                        c.attack(target, damageRoll);
+                        target.takeDamage(damageRoll);
                 }
             } else {
                 System.out.println(c.getName() + "'s turn!");
@@ -30,14 +34,15 @@ public class ChooseAction {
                 if (c.getClassType().equals("Orc")) {
                     if (monsterRandom.nextBoolean()) {
                         System.out.println("Orc chooses to attack!");
-                        c.attack(enemy.getFirst());
-                        c.buff();
+                        int damageRoll = c.getDamage();
+                        Character target = enemy.getFirst();
+                        c.attack(target, damageRoll);
+                        target.takeDamage(damageRoll);
                     } else {
                         System.out.println("Orc chooses to buff!");
                         c.buff();
                     }
-                    System.out.println("orc base damage= " + Orc.baseDamage);
-                    c.attack(TargetChooser.chooseTarget(enemy));
+
 
                 }
 

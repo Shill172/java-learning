@@ -16,10 +16,6 @@ public class GodOfWar implements Gods {
         return 1;
     }
 
-    public int getDamage() {
-        return baseDamage + (int) (Math.random() * 5);
-    }
-
     public String secondActionText() {
         return "Buff (+3) damage";
     }

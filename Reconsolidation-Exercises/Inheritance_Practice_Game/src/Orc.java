@@ -11,8 +11,8 @@ public class Orc extends Character {
     }
 
     @Override
-    public void attack(Character target) {
-        System.out.println(getName() + " swings their club! Pummeling " + target.getName() + " for " + getDamage() + " damage.");
+    public void attack(Character target, int damage) {
+        System.out.println(getName() + " swings their club! Pummeling " + target.getName() + " for " + damage + " damage.");
     }
 
     @Override

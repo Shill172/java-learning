@@ -12,24 +12,19 @@ public abstract class Character {
     }
 
     public int getDamage() {
-        return 5;
+        return 0;
     }
 
     public String getName() {
         return name;
     }
 
-    public void takeDamage(int damage) {
-        health -= damage;
-    }
-
-    public int getDamage(int baseDamage) {
-        return baseDamage + (int)(Math.random() + 5);
+    public int getHealth() {
+        return health;
     }
 
 
-
-    public abstract void attack(Character target);
+    public abstract void attack(Character target, int damage);
 
     public Gods getGod() {
         return null;
@@ -45,6 +40,11 @@ public abstract class Character {
 
     public void buff() {
 
+    }
+
+    public void takeDamage(int damage) {
+        health -= damage;
+        System.out.println(name + " took " + damage + " damage! Leaving them with " + getHealth() + " health");
     }
 
 }

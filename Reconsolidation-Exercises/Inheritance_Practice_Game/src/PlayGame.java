@@ -43,18 +43,22 @@ public class PlayGame {
         }
 
 
-        System.out.println("Okay! Lets finally start the game. Kill your opponent(s): ");
+        System.out.println("Okay! Lets finally start the game. Slay your opponent(s): ");
         for (int i = 0; i < enemies.size(); i++) {
             System.out.print(enemies.get(i).getName() + " ");
         }
 
         System.out.println();
 
-        boolean running;
-        while (running = true) {
+        boolean running = true;
+        while (running) {
             ChooseAction.chooseAction(players, enemies);
             ChooseAction.chooseAction(enemies, players);
-            break;
+            String death = CheckHealth.healthCheck(players, enemies);
+            if (death.equals("PlayerDeath") || death.equals("EnemyDeath")) {
+                running = false;
+            }
+
         }
 
     }

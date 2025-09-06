@@ -4,12 +4,10 @@ public interface Gods {
 
     int getTargets();
 
-    int baseDamage = 10;
-
-    int getDamage();
-
     void secondAction();
 
     String secondActionText();
+
+    int baseDamage = 10;
 
 }

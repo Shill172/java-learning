@@ -1,8 +1,11 @@
+import java.util.Random;
 import java.util.Scanner;
 
 public class Paladin extends Character {
     private Gods chosenGod;
     Scanner scanner = new Scanner(System.in);
+    static int baseDamage = 10;
+    Random rand = new Random();
 
     public Paladin(String name, int health, String classType) {
         super(name, health, classType);
@@ -31,12 +34,18 @@ public class Paladin extends Character {
     }
 
     @Override
+    public int getDamage() {
+        return baseDamage + rand.nextInt(10);
+    }
+
+
+    @Override
     public Gods getGod() {
         return chosenGod;
     }
 
     @Override
-    public void attack(Character target) {//Name        //attacks....                                   // monster 1 etc...
-        System.out.println(getName() + chosenGod.getFightDialogue() + chosenGod.getDamage() + " damage to " + target.getName());
+    public void attack(Character target, int damage) {//Name        //attacks....                                   // monster 1 etc...
+        System.out.println(getName() + chosenGod.getFightDialogue() + damage + " damage to " + target.getName());
     }
 }
