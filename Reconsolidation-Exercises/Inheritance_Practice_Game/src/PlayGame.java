@@ -53,15 +53,15 @@ public class PlayGame {
         boolean running = true;
         while (running) {
             ChooseAction.chooseAction(players, enemies);
+            running = CheckHealth.healthCheck(enemies);
+            if (!running) break;
+
             ChooseAction.chooseAction(enemies, players);
-            String death = CheckHealth.healthCheck(players, enemies);
-            if (death.equals("PlayerDeath") || death.equals("EnemyDeath")) {
-                running = false;
-            }
+            running = CheckHealth.healthCheck(players);
+            if (!running) break;
 
         }
 
     }
-
 
 }

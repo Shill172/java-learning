@@ -47,4 +47,9 @@ public abstract class Character {
         System.out.println(name + " took " + damage + " damage! Leaving them with " + getHealth() + " health");
     }
 
+    @Override
+    public String toString() {
+        return name + " (" + classType + ")";
+    }
+
 }
