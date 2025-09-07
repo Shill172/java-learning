@@ -38,6 +38,11 @@ public class Paladin extends Character {
         return baseDamage + rand.nextInt(10);
     }
 
+    @Override
+    public void buff() {
+        baseDamage += 5;
+    }
+
 
     @Override
     public Gods getGod() {
@@ -48,4 +53,10 @@ public class Paladin extends Character {
     public void attack(Character target, int damage) {//Name        //attacks....                                   // monster 1 etc...
         System.out.println(getName() + chosenGod.getFightDialogue() + damage + " damage to " + target.getName());
     }
+
+    @Override
+    public void secondAction() {
+        System.out.println(getName() + chosenGod.secondActionDialogue());
+    }
+
 }

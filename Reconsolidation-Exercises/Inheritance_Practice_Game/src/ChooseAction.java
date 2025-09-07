@@ -22,11 +22,27 @@ public class ChooseAction {
 
                 switch (actionScanner.nextLine()) {
                     case "1":
-                        //player damage roll
                         int damageRoll = c.getDamage();
-                        Character target = TargetChooser.chooseTarget(enemy);
-                        c.attack(target, damageRoll);
-                        target.takeDamage(damageRoll);
+                        if (c.getGod() instanceof GodOfWar) {
+                            Character target = TargetChooser.chooseTarget(enemy);
+                            c.attack(target, damageRoll);
+                            target.takeDamage(damageRoll);
+                        } else {
+                            for (Character targets : enemy) {
+                                c.attack(targets, damageRoll / enemy.size());
+                                targets.takeDamage(damageRoll/enemy.size());
+                            }
+                        }
+                    case "2":
+                        c.secondAction();
+                        if (c.getGod() instanceof GodOfWar) {
+                            c.buff();
+                        } else {
+                            for (Character allies : character) {
+                                allies.health += 10;
+                            }
+                        }
+
                 }
             } else {
                 System.out.println(c.getName() + "'s turn!");

@@ -54,11 +54,17 @@ public class PlayGame {
         while (running) {
             ChooseAction.chooseAction(players, enemies);
             running = CheckHealth.healthCheck(enemies);
-            if (!running) break;
+            if (!running) {
+                System.out.println("You win! ദ്ദി˙ ᴗ ˙ )");
+                break;
+            }
 
             ChooseAction.chooseAction(enemies, players);
             running = CheckHealth.healthCheck(players);
-            if (!running) break;
+            if (!running) {
+                System.out.println("Game over ☠");
+                break;
+            }
 
         }
 

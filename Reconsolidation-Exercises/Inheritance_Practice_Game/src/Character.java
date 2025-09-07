@@ -52,4 +52,8 @@ public abstract class Character {
         return name + " (" + classType + ")";
     }
 
+    public void secondAction() {
+
+    }
+
 }

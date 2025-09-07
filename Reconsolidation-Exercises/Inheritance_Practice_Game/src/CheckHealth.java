@@ -11,7 +11,6 @@ public class CheckHealth {
                 alive = true;
             } else {
                 System.out.println(player.getName() + " is dead.");
-
             }
         }
 

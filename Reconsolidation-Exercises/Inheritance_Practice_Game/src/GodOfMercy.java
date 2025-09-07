@@ -4,23 +4,14 @@ public class GodOfMercy implements Gods {
         return " attacks elegantly, dealing ";
     }
 
-    public int getTargets() {
-        return 2;
-    }
-
-    public int getDamage() {
-        return baseDamage / getTargets() + (int) (Math.random() * 3);
-    }
-
-    @Override
-    public void secondAction() {
-        System.out.println("not done yet");
-    }
-
     @Override
     public String secondActionText() {
-        return "Heal (5 HP)";
+        return "Heal (10 HP)";
     }
 
+    @Override
+    public String secondActionDialogue() {
+        return " Prays! Healing 10HP for all allies.";
+    }
 
 }
