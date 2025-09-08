@@ -27,11 +27,13 @@ public class ChooseAction {
                             Character target = TargetChooser.chooseTarget(enemy);
                             c.attack(target, damageRoll);
                             target.takeDamage(damageRoll);
+                            break;
                         } else {
                             for (Character targets : enemy) {
                                 c.attack(targets, damageRoll / enemy.size());
                                 targets.takeDamage(damageRoll/enemy.size());
                             }
+                            break;
                         }
                     case "2":
                         c.secondAction();
@@ -41,6 +43,7 @@ public class ChooseAction {
                             for (Character allies : character) {
                                 allies.health += 10;
                             }
+                            break;
                         }
 
                 }
@@ -57,7 +60,18 @@ public class ChooseAction {
                     } else {
                         System.out.println("Orc chooses to buff!");
                         c.buff();
-                    }
+                        }
+                    } else {
+                        if (monsterRandom.nextBoolean()) {
+                            System.out.println("Vampire chooses to attack!");
+                            int damageRoll = c.getDamage();
+                            Character target = enemy.getFirst();
+                            c.attack(target, damageRoll);
+                            target.takeDamage(damageRoll);
+                            c.health += damageRoll/2;
+                        } else {
+                            ((Vampire)c).transform();
+                        }
 
 
                 }
