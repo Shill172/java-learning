@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Random;
 
 public class Orc extends Character {
@@ -28,6 +29,21 @@ public class Orc extends Character {
     @Override
     public boolean getIsPlayer() {
         return false;
+    }
+
+    @Override
+    public void takeTurn(ArrayList<Character> character, ArrayList<Character> enemy) {
+        System.out.println(name + "'s turn!");
+        if (rand.nextBoolean()) {
+            System.out.println("Orc chooses to attack!");
+            int damageRoll = getDamage();
+            Character target = enemy.getFirst();
+            attack(target, damageRoll);
+            target.takeDamage(damageRoll);
+        } else {
+            System.out.println("Orc chooses to buff!");
+            buff();
+        }
     }
 
 

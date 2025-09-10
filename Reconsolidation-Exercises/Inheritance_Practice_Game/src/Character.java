@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public abstract class Character {
 
     String name;
@@ -56,4 +58,11 @@ public abstract class Character {
 
     }
 
+    public Mantra getMantra() {
+        return null;
+    }
+
+    public void takeTurn(ArrayList<Character> character, ArrayList<Character> enemy) {
+
+    }
 }

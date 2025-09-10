@@ -12,14 +12,19 @@ public class PlayGame {
         Scanner sc = new Scanner(System.in);
         System.out.println("Welcome to the game. Please select a class.");
         System.out.println("1. Paladin");
+        System.out.println("2. Monk");
 
-        Character paladin = null;
         switch (sc.nextLine()) {
             case "1":
                 System.out.println("Enter your name: ");
-                String name = sc.nextLine();
-                paladin = new Paladin(name, 50, "Paladin");
+                String paladinName = sc.nextLine();
+                Character paladin = new Paladin(paladinName, 50, "Paladin");
                 players.add(paladin);
+                break;
+            case "2":
+                System.out.println("Enter your name: ");
+                String monkName = sc.nextLine();
+                Character monk = new Monk(monkName, 40, "Monk");
         }
 
         System.out.println("How many enemies do you want to face? (1, 2, 3)");
