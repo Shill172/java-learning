@@ -6,4 +6,6 @@ public interface Mantra {
     String secondActionDialogue();
 
     void channelMantra();
+
+    boolean getIfChanneling();
 }

@@ -36,7 +36,10 @@ public class Paladin extends Character {
 
     @Override
     public int getDamage() {
-        return baseDamage + rand.nextInt(10);
+        int dmg = baseDamage + rand.nextInt(10);
+        dmg *= damageMultiplier;
+        damageMultiplier = 1;
+        return dmg;
     }
 
     @Override

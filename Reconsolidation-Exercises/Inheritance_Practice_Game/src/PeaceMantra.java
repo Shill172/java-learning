@@ -1,4 +1,7 @@
 public class PeaceMantra implements Mantra {
+
+    private boolean channeling = true;
+
     @Override
     public String getFightDialogue() {
         return " Realises they must fight, dealing ";
@@ -11,12 +14,18 @@ public class PeaceMantra implements Mantra {
 
     @Override
     public String secondActionDialogue() {
-        return " Focuses, setting up a wide barrier for 1 turn.";
+        return " Goes into a trance, setting up a barrier for all allies for a single turn";
     }
 
     @Override
     public void channelMantra() {
+        channeling =! channeling;
 
+    }
+
+    @Override
+    public boolean getIfChanneling() {
+        return channeling;
     }
 
 }

@@ -7,6 +7,8 @@ public class Monk extends Character {
     Scanner scanner = new Scanner(System.in);
     static int baseDamage = 10;
     Random rand = new Random();
+    public boolean blocking = false;
+    private boolean canBlock = true;
 
     public Monk(String name, int health, String classType) {
         super(name, health, classType);
@@ -36,7 +38,12 @@ public class Monk extends Character {
 
     @Override
     public int getDamage() {
-        return baseDamage + rand.nextInt(5);
+        int dmg = (baseDamage + rand.nextInt(5));
+        dmg *= damageMultiplier;
+        damageMultiplier = 1;
+        return dmg;
+
+
     }
 
     @Override
@@ -46,7 +53,7 @@ public class Monk extends Character {
 
     @Override
     public void attack(Character target, int damage) {
-
+        System.out.println(name + mantra.getFightDialogue());
     }
 
     @Override
@@ -55,42 +62,68 @@ public class Monk extends Character {
     }
 
     @Override
+    public boolean isBlocking() {
+        return blocking;
+    }
+
+    public void setBlockingTrue() {
+        blocking = true;
+    }
+
+    public void setBlockingFalse() {
+        blocking = false;
+    }
+
+    @Override
     public void takeTurn(ArrayList<Character> character, ArrayList<Character> enemy) {
+        boolean valid = false;
+        while (!valid) {
+            System.out.println("Your turn, " + name + "! Please choose an action:");
+            if (mantra instanceof PeaceMantra) {
+                System.out.println("1. Palm");
+            } else {
+                System.out.println("1. Barrage");
+            }
+            System.out.println("2. " + mantra.secondActionText());
 
-        // Choosing Turn
-        System.out.println("Your turn, " + name + "! Please choose an action:");
-        if (mantra instanceof PeaceMantra) {
-            System.out.println("1. Slash");
-        } else {
-            System.out.println("1. Sweep");
-        }
-        System.out.println("2. " + mantra.secondActionText());
-
-        // Input
-        switch (scanner.nextLine()) {
-            case "1":
-                int damageRoll = getDamage();
-                if (mantra instanceof PeaceMantra) {
-                    Character target = TargetChooser.chooseTarget(enemy);
-                    attack(target, damageRoll);
-                    target.takeDamage(damageRoll);
-                    break;
-                } else {
-                    for (Character targets : enemy) {
-                        attack(targets, damageRoll / enemy.size());
-                        targets.takeDamage(damageRoll / enemy.size());
+            // Input
+            switch (scanner.nextLine()) {
+                case "1":
+                    int damageRoll = getDamage();
+                    if (mantra instanceof PeaceMantra) {
+                        Character target = TargetChooser.chooseTarget(enemy);
+                        attack(target, damageRoll);
+                        target.takeDamage(damageRoll);
+                        canBlock = true;
+                        valid = true;
+                        setBlockingFalse();
+                        break;
+                    } else {
+                        for (Character targets : enemy) {
+                            attack(targets, damageRoll / enemy.size());
+                            targets.takeDamage(damageRoll / enemy.size());
+                        }
+                        valid = true;
                     }
                     break;
-                }
-            case "2":
-                secondAction();
-                if (mantra instanceof GodOfWar) {
-                    buff();
-                } else {
-                    for (Character allies : character) {
-                        allies.health += 10;
+                case "2":
+                    if (mantra instanceof PeaceMantra) {
+                        if (canBlock) {
+                            setBlockingTrue();
+                            canBlock = false;
+                            secondAction();
+                            valid = true;
+                        } else {
+                            System.out.println("You cannot block because you blocked the previous turn!");
+                        }
+                    } else {
+                        secondAction();
+                        damageMultiplier *= 3;
+                        valid = true;
                     }
-                }        break;
+
+                    break;
+            }
         }
     }
 

@@ -6,6 +6,7 @@ public abstract class Character {
     int health;
     String classType;
     boolean isPlayer = true;
+    protected int damageMultiplier = 1;
 
     public Character(String name, int health, String classType) {
         this.name = name;
@@ -45,8 +46,13 @@ public abstract class Character {
     }
 
     public void takeDamage(int damage) {
-        health -= damage;
-        System.out.println(name + " took " + damage + " damage! Leaving them with " + getHealth() + " health");
+        if (isBlocking()) {
+            System.out.println(name + " took no damage because the attack was blocked!");
+        } else {
+            health -= damage;
+            System.out.println(name + " took " + damage + " damage! Leaving them with " + getHealth() + " health");
+        }
+
     }
 
     @Override
@@ -64,5 +70,9 @@ public abstract class Character {
 
     public void takeTurn(ArrayList<Character> character, ArrayList<Character> enemy) {
 
+    }
+
+    public boolean isBlocking() {
+        return false;
     }
 }

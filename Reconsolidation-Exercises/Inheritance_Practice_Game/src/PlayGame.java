@@ -25,6 +25,8 @@ public class PlayGame {
                 System.out.println("Enter your name: ");
                 String monkName = sc.nextLine();
                 Character monk = new Monk(monkName, 40, "Monk");
+                players.add(monk);
+                break;
         }
 
         System.out.println("How many enemies do you want to face? (1, 2, 3)");

@@ -1,7 +1,5 @@
 public class GodOfWar implements Gods {
 
-    static int buffDamage = 0;
-
     @Override
     public String getFightDialogue() {
         return " attacks furiously! Dealing ";
