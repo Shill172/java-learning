@@ -42,8 +42,6 @@ public class Monk extends Character {
         dmg *= damageMultiplier;
         damageMultiplier = 1;
         return dmg;
-
-
     }
 
     @Override
