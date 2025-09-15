@@ -21,19 +21,16 @@ public class Monk extends Character {
                 1. Worthy
                 2. Peace
                 """);
-        String choice = scanner.nextLine();
+        int choice = Validations.numberInputValidation(scanner, 3);
         switch (choice) {
-            case "1":
+            case 1:
                 System.out.println("You are worthy!");
                 return new WorthyMantra();
-            case "2":
+            case 2:
                 System.out.println("You are at peace!");
                 return new PeaceMantra();
-
-            default:
-                return null;
         }
-
+        return null;
     }
 
     @Override
@@ -85,8 +82,9 @@ public class Monk extends Character {
             System.out.println("2. " + mantra.secondActionText());
 
             // Input
-            switch (scanner.nextLine()) {
-                case "1":
+            int monkInput = Validations.numberInputValidation(scanner, 3);
+            switch (monkInput) {
+                case 1:
                     int damageRoll = getDamage();
                     if (mantra instanceof PeaceMantra) {
                         Character target = TargetChooser.chooseTarget(enemy);
@@ -104,7 +102,7 @@ public class Monk extends Character {
                         valid = true;
                     }
                     break;
-                case "2":
+                case 2:
                     if (mantra instanceof PeaceMantra) {
                         if (canBlock) {
                             setBlockingTrue();

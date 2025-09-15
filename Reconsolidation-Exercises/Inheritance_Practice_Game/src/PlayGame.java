@@ -13,10 +13,10 @@ public class PlayGame {
         System.out.println("Welcome to the game. Please select a class.");
         System.out.println("1. Paladin");
         System.out.println("2. Monk");
-        int input = Validations.numberInputValidation(sc, 3);
+        int charInput = Validations.numberInputValidation(sc, 3);
         sc.nextLine();
 
-        switch (input) {
+        switch (charInput) {
             case 1:
                 System.out.println("Enter your name: ");
                 String paladinName = sc.nextLine();
@@ -32,23 +32,24 @@ public class PlayGame {
         }
 
         System.out.println("How many enemies do you want to face? (1, 2, 3)");
-        switch (sc.nextLine()) {
-            case "1":
+        int enemyInput = Validations.numberInputValidation(sc, 4);
+        sc.nextLine();
+        switch (enemyInput) {
+            case 1:
                 System.out.println("Generating 1 enemy");
                 enemies.add(EnemyCreator.generateEnemy());
                 break;
-            case "2":
+            case 2:
                 System.out.println("Generating 2 enemies");
                 enemies.add(EnemyCreator.generateEnemy());
                 enemies.add(EnemyCreator.generateEnemy());
                 break;
-            case "3":
+            case 3:
                 System.out.println("Generating 3 enemies");
                 enemies.add(EnemyCreator.generateEnemy());
                 enemies.add(EnemyCreator.generateEnemy());
                 enemies.add(EnemyCreator.generateEnemy());
                 break;
-
         }
 
 

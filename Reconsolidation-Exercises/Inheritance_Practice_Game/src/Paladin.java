@@ -18,13 +18,12 @@ public class Paladin extends Character {
                 Please choose one of the following gods:
                 1. God of War (Self Buffing & Strong single target attacks)
                 2. God of Mercy (Healing abilities & weak sweeping attacks)""");
-        String choice = scanner.nextLine();
+        int choice = Validations.numberInputValidation(scanner, 3);
         switch (choice) {
-            case "1":
+            case 1:
                 System.out.println("God of War chosen!");
                 return new GodOfWar();
-
-            case "2":
+            case 2:
                 System.out.println("God of Mercy chosen!");
                 return new GodOfMercy();
 
@@ -76,8 +75,9 @@ public class Paladin extends Character {
         System.out.println("2. " + chosenGod.secondActionText());
 
         // Input
-        switch (scanner.nextLine()) {
-            case "1":
+        int paladinInput = Validations.numberInputValidation(scanner, 3);
+        switch (paladinInput) {
+            case 1:
                 int damageRoll = getDamage();
                 if (chosenGod instanceof GodOfWar) {
                     Character target = TargetChooser.chooseTarget(enemy);
@@ -91,7 +91,7 @@ public class Paladin extends Character {
                     }
                     break;
                 }
-            case "2":
+            case 2:
                 secondAction();
                 if (chosenGod instanceof GodOfWar) {
                     buff();

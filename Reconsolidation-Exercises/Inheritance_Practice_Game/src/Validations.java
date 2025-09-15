@@ -7,9 +7,9 @@ public class Validations {
         while (true) {
             if (scanner.hasNextInt()) {
                 input = scanner.nextInt();
-                if (input >= boundary || input < 0) {
+                if (input >= boundary || input <= 0) {
                     int rangeNum = boundary - 1;
-                    System.out.println("Your input: " + input + "exceeds the boundary: 1-" + rangeNum + "\nTry again: ");
+                    System.out.println("Your input: " + input + " exceeds the boundary: 1-" + rangeNum + "\nTry again: ");
                 } else {
                     return input;
                 }
