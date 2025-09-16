@@ -10,25 +10,29 @@ public class PlayGame {
         ArrayList<Character> enemies = new ArrayList<>();
 
         Scanner sc = new Scanner(System.in);
-        System.out.println("Welcome to the game. Please select a class.");
-        System.out.println("1. Paladin");
-        System.out.println("2. Monk");
-        int charInput = Validations.numberInputValidation(sc, 3);
-        sc.nextLine();
+        System.out.println("How many allies do you wish to create? (1, 2, 3)");
+        int alliesInput = Validations.numberInputValidation(sc, 4);
+        for (int i = 0; i < alliesInput; i++) {
+            System.out.println("Welcome to the game. Please select a class for ally " + i);
+            System.out.println("1. Paladin");
+            System.out.println("2. Monk");
+            int charInput = Validations.numberInputValidation(sc, 3);
+            sc.nextLine();
 
-        switch (charInput) {
-            case 1:
-                System.out.println("Enter your name: ");
-                String paladinName = sc.nextLine();
-                Character paladin = new Paladin(paladinName, 50, "Paladin");
-                players.add(paladin);
-                break;
-            case 2:
-                System.out.println("Enter your name: ");
-                String monkName = sc.nextLine();
-                Character monk = new Monk(monkName, 40, "Monk");
-                players.add(monk);
-                break;
+            switch (charInput) {
+                case 1:
+                    System.out.println("Enter your name: ");
+                    String paladinName = sc.nextLine();
+                    Character paladin = new Paladin(paladinName, 50, "Paladin");
+                    players.add(paladin);
+                    break;
+                case 2:
+                    System.out.println("Enter your name: ");
+                    String monkName = sc.nextLine();
+                    Character monk = new Monk(monkName, 40, "Monk");
+                    players.add(monk);
+                    break;
+            }
         }
 
         System.out.println("How many enemies do you want to face? (1, 2, 3)");
