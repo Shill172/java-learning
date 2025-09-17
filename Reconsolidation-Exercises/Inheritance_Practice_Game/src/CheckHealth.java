@@ -18,4 +18,12 @@ public class CheckHealth {
         return alive;
     }
 
+    public static boolean singleHealthCheck(Character chara) {
+        if (chara.getHealth() > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 }

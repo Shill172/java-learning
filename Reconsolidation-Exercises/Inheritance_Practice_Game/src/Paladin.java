@@ -64,7 +64,6 @@ public class Paladin extends Character {
 
     @Override
     public void takeTurn(ArrayList<Character> character, ArrayList<Character> enemy) {
-
         // Choosing Turn
         System.out.println("Your turn, " + name + "! Please choose an action:");
         if (chosenGod instanceof GodOfWar) {

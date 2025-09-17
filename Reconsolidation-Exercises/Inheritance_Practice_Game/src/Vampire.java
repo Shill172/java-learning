@@ -30,7 +30,7 @@ public class Vampire extends Character {
 
     public void transform() {
         System.out.println("Vampire transforms! Increasing it's evasion.");
-        evasion += 20;
+        evasion += 10;
     }
 
     @Override
