@@ -37,7 +37,7 @@ public class Orc extends Character {
         if (rand.nextBoolean()) {
             System.out.println("Orc chooses to attack!");
             int damageRoll = getDamage();
-            Character target = enemy.getFirst();
+            Character target = TargetChooser.aiChooseTarget(enemy);
             attack(target, damageRoll);
             target.takeDamage(damageRoll);
         } else {

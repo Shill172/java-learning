@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.InputMismatchException;
+import java.util.Random;
 import java.util.Scanner;
 
 public class TargetChooser {
@@ -33,6 +34,25 @@ public class TargetChooser {
             }
         }
 
+    }
+
+    public static Character aiChooseTarget(ArrayList<Character> target) {
+        Random targetRandom = new Random();
+
+        ArrayList<Character> copyTargets = new ArrayList<>(target);
+
+        for (Character t : copyTargets) {
+            if (t.getHealth() < 0) {
+                copyTargets.remove(t);
+                int index = targetRandom.nextInt(copyTargets.size());
+                return copyTargets.get(index);
+            } else {
+                int index = targetRandom.nextInt(copyTargets.size());
+                return copyTargets.get(index);
+            }
+        }
+
+        return null;
     }
 
 }

@@ -50,7 +50,7 @@ public class Vampire extends Character {
         if (rand.nextBoolean()) {
             System.out.println("Vampire chooses to attack!");
             int damageRoll = getDamage();
-            Character target = enemy.getFirst();
+            Character target = TargetChooser.aiChooseTarget(enemy);
             attack(target, damageRoll);
             target.takeDamage(damageRoll);
             health += damageRoll/2;
