@@ -7,11 +7,13 @@ public abstract class Character {
     String classType;
     boolean isPlayer = true;
     protected int damageMultiplier = 1;
+    int maxHealth;
 
-    public Character(String name, int health, String classType) {
+    public Character(String name, int maxHealth, String classType) {
         this.name = name;
-        this.health = health;
+        this.health = maxHealth;
         this.classType = classType;
+        this.maxHealth = maxHealth;
     }
 
     public int getDamage() {

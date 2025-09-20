@@ -96,7 +96,7 @@ public class Paladin extends Character {
                     buff();
                 } else {
                     for (Character allies : character) {
-                        allies.health += 10;
+                        allies.health = Math.min(allies.health + 10, allies.maxHealth);
                     }
                 }        break;
         }

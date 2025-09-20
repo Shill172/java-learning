@@ -13,7 +13,7 @@ public class PlayGame {
         System.out.println("How many allies do you wish to create? (1, 2, 3)");
         int alliesInput = Validations.numberInputValidation(sc, 4);
         for (int i = 0; i < alliesInput; i++) {
-            System.out.println("Welcome to the game. Please select a class for ally " + i);
+            System.out.println("Welcome to the game. Please select a class for ally " + (i+1));
             System.out.println("1. Paladin");
             System.out.println("2. Monk");
             int charInput = Validations.numberInputValidation(sc, 3);

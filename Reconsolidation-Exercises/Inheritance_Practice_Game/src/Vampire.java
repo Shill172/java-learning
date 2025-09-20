@@ -53,7 +53,7 @@ public class Vampire extends Character {
             Character target = TargetChooser.aiChooseTarget(enemy);
             attack(target, damageRoll);
             target.takeDamage(damageRoll);
-            health += damageRoll/2;
+            health = Math.min(health + damageRoll/2, maxHealth);
         } else {
             transform();
         }

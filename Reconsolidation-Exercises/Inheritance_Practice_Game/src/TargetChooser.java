@@ -22,9 +22,10 @@ public class TargetChooser {
                     Character chosen = target.get(i);
                     if (chosen.getHealth() > 0) {
                         return chosen;
-                    } else {
-                        System.out.println("You can't target the dead.");
+                    } else if (target.stream().allMatch(t -> t.health <= 0)) {
+                        return chosen;
                     }
+                    System.out.println("You can't target the dead.");
                 } else {
                     System.out.println("Please enter a valid choice");
                 }
