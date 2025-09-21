@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Paladin extends Character {
     private Gods chosenGod;
     Scanner scanner = new Scanner(System.in);
-    static int baseDamage = 10;
+    int baseDamage = 10;
     Random rand = new Random();
 
     public Paladin(String name, int health, String classType) {
@@ -35,10 +35,7 @@ public class Paladin extends Character {
 
     @Override
     public int getDamage() {
-        int dmg = baseDamage + rand.nextInt(10);
-        dmg *= damageMultiplier;
-        damageMultiplier = 1;
-        return dmg;
+        return getBaseDamage() + rand.nextInt(10);
     }
 
     @Override
@@ -50,6 +47,10 @@ public class Paladin extends Character {
     @Override
     public Gods getGod() {
         return chosenGod;
+    }
+
+    public int getBaseDamage() {
+        return baseDamage;
     }
 
     @Override
