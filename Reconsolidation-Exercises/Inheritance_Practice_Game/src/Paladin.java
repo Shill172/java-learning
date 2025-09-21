@@ -43,12 +43,6 @@ public class Paladin extends Character {
         baseDamage += 5;
     }
 
-
-    @Override
-    public Gods getGod() {
-        return chosenGod;
-    }
-
     public int getBaseDamage() {
         return baseDamage;
     }

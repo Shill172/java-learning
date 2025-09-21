@@ -42,11 +42,6 @@ public class Monk extends Character {
     }
 
     @Override
-    public Mantra getMantra() {
-        return mantra;
-    }
-
-    @Override
     public void attack(Character target, int damage) {
         System.out.println(name + mantra.getFightDialogue());
     }

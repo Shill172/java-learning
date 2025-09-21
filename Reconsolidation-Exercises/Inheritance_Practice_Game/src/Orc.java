@@ -27,11 +27,6 @@ public class Orc extends Character {
     }
 
     @Override
-    public boolean getIsPlayer() {
-        return false;
-    }
-
-    @Override
     public void takeTurn(ArrayList<Character> character, ArrayList<Character> enemy) {
         System.out.println(name + "'s turn!");
         if (rand.nextBoolean()) {

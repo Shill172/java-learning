@@ -5,7 +5,6 @@ public abstract class Character {
     String name;
     int health;
     String classType;
-    boolean isPlayer = true;
     protected int damageMultiplier = 1;
     int maxHealth;
 
@@ -28,23 +27,9 @@ public abstract class Character {
         return health;
     }
 
-
     public abstract void attack(Character target, int damage);
 
-    public Gods getGod() {
-        return null;
-    }
-
-    public boolean getIsPlayer() {
-        return isPlayer;
-    }
-
-    public String getClassType() {
-        return classType;
-    }
-
     public void buff() {
-
     }
 
     public void takeDamage(int damage) {
@@ -62,17 +47,9 @@ public abstract class Character {
         return name + " (" + classType + ")";
     }
 
-    public void secondAction() {
+    public void secondAction() {}
 
-    }
-
-    public Mantra getMantra() {
-        return null;
-    }
-
-    public void takeTurn(ArrayList<Character> character, ArrayList<Character> enemy) {
-
-    }
+    public void takeTurn(ArrayList<Character> character, ArrayList<Character> enemy) {}
 
     public boolean isBlocking() {
         return false;

@@ -23,7 +23,6 @@ public class Vampire extends Character {
         return baseDamage + rand.nextInt(4);
     }
 
-    @Override
     public boolean getIsPlayer() {
         return false;
     }
