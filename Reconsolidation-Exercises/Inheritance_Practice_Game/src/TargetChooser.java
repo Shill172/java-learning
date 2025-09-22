@@ -39,7 +39,6 @@ public class TargetChooser {
 
     public static Character aiChooseTarget(ArrayList<Character> target) {
         Random targetRandom = new Random();
-
         ArrayList<Character> copyTargets = new ArrayList<>(target);
 
         for (Character t : copyTargets) {

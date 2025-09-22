@@ -1,6 +1,5 @@
 public class GodOfWar implements Gods {
 
-    @Override
     public String getFightDialogue() {
         return " attacks furiously! Dealing ";
     }
@@ -12,6 +11,4 @@ public class GodOfWar implements Gods {
     public String secondActionDialogue() {
         return " Rages! Buffing their attack power by 5";
     }
-
-
 }

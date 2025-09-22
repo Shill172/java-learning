@@ -39,7 +39,6 @@ public abstract class Character {
             health -= damage;
             System.out.println(name + " took " + damage + " damage! Leaving them with " + getHealth() + " health");
         }
-
     }
 
     @Override

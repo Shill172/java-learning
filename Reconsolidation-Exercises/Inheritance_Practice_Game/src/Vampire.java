@@ -2,16 +2,13 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Vampire extends Character {
-
     static int evasion = 0;
+    Random rand = new Random();
+    final int baseDamage = 8;
 
     public Vampire(String name, int health, String classType) {
         super(name, health, classType);
     }
-
-    Random rand = new Random();
-
-    final int baseDamage = 8;
 
     @Override
     public void attack(Character target, int damage) {
@@ -21,10 +18,6 @@ public class Vampire extends Character {
     @Override
     public int getDamage() {
         return baseDamage + rand.nextInt(4);
-    }
-
-    public boolean getIsPlayer() {
-        return false;
     }
 
     public void transform() {

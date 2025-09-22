@@ -13,8 +13,6 @@ public class CheckHealth {
                 System.out.println(player.getName() + " is dead.");
             }
         }
-
-
         return alive;
     }
 

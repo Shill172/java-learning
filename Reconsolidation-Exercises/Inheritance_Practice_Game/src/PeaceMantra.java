@@ -16,16 +16,4 @@ public class PeaceMantra implements Mantra {
     public String secondActionDialogue() {
         return " Goes into a trance, setting up a barrier for all allies for a single turn";
     }
-
-    @Override
-    public void channelMantra() {
-        channeling =! channeling;
-
-    }
-
-    @Override
-    public boolean getIfChanneling() {
-        return channeling;
-    }
-
 }

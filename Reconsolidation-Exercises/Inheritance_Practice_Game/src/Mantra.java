@@ -4,8 +4,4 @@ public interface Mantra {
     String secondActionText();
 
     String secondActionDialogue();
-
-    void channelMantra();
-
-    boolean getIfChanneling();
 }

@@ -2,9 +2,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Orc extends Character {
-
     static int baseDamage = 10;
-
     Random rand = new Random();
 
     public Orc(String name, int health, String classType) {
@@ -40,8 +38,5 @@ public class Orc extends Character {
             buff();
         }
     }
-
-
-
 }
 

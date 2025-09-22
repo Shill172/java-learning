@@ -26,7 +26,6 @@ public class Paladin extends Character {
             case 2:
                 System.out.println("God of Mercy chosen!");
                 return new GodOfMercy();
-
             default:
                 System.out.println("invalid choice");
         }

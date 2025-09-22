@@ -16,15 +16,4 @@ public class WorthyMantra implements Mantra {
     public String secondActionDialogue() {
         return " Focuses, as they focus for all allies next attack.";
     }
-
-    @Override
-    public void channelMantra() {
-        channeling =! channeling;
-    }
-
-    @Override
-    public boolean getIfChanneling() {
-        return channeling;
-    }
-
 }
